@@ -74,7 +74,7 @@ export default function PostCard({ post, onPlay, isPlaying, onOpenComments }) {
       <div aria-hidden className="absolute -top-24 -right-24 h-64 w-64 rounded-full blur-3xl opacity-60 animate-blob-a pointer-events-none" style={{ background: theme.to }} />
       <div aria-hidden className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full blur-3xl opacity-50 animate-blob-b pointer-events-none" style={{ background: theme.from }} />
 
-      <div className="relative p-5 sm:p-6">
+      <div className="relative p-4 sm:p-6">
         {/* Header */}
         <header className="flex items-center gap-3">
           <img src={post.user.avatar} alt={post.user.username} className="h-11 w-11 rounded-full object-cover ring-2 ring-white/40" />
@@ -100,7 +100,7 @@ export default function PostCard({ post, onPlay, isPlaying, onOpenComments }) {
 
         {/* Song hero with double-tap */}
         <div
-          className="mt-6 relative select-none"
+          className="mt-5 sm:mt-6 relative select-none"
           onClick={handleCoverTap}
           role="button"
           tabIndex={0}
@@ -134,7 +134,7 @@ export default function PostCard({ post, onPlay, isPlaying, onOpenComments }) {
               ))}
             </div>
 
-            <div className="flex-1 min-w-0 rounded-2xl p-4 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.28)', backdropFilter: 'blur(6px)' }}>
+            <div className="flex-1 min-w-0 rounded-2xl p-3 sm:p-4 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.28)', backdropFilter: 'blur(6px)' }}>
               <div className="min-w-0">
                 <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] font-bold opacity-80">
                   <Equalizer playing={isPlaying} size={10} />
@@ -146,7 +146,7 @@ export default function PostCard({ post, onPlay, isPlaying, onOpenComments }) {
               <div className="mt-3 flex items-center gap-2 flex-wrap">
                 <button
                   onClick={(e) => { e.stopPropagation(); onPlay?.(post); }}
-                  className="btn-press inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white text-ink-950 text-xs font-bold"
+                  className="btn-press hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white text-ink-950 text-xs font-bold"
                 >
                   {isPlaying ? <PauseIcon size={14} /> : <PlayIcon size={14} />}
                   {isPlaying ? 'Pause' : 'Preview'}
@@ -158,7 +158,7 @@ export default function PostCard({ post, onPlay, isPlaying, onOpenComments }) {
         </div>
 
         {/* Reactions row */}
-        <div className="mt-5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+        <div className="mt-4 sm:mt-5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
           {reactionPalette.map((r) => {
             const count = reactions[r.id] || 0;
             const active = count > 0;

@@ -30,12 +30,6 @@ export default function VibesNow({ onAdd }) {
                   aria-label={v.isMe ? 'Add your vibe' : `${v.user.displayName} ${v.label}`}
                 >
                   <div className="relative">
-                    {/* Glow behind avatar */}
-                    <span
-                      aria-hidden
-                      className="absolute -inset-2 rounded-full blur-xl opacity-50 group-hover:opacity-90 transition"
-                      style={{ background: `linear-gradient(135deg, ${t.from}, ${t.to})` }}
-                    />
                     {/* Gradient ring — image sits inside with a thin transparent gap */}
                     <span
                       className="relative grid place-items-center h-[62px] w-[62px] rounded-full"
