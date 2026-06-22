@@ -7,7 +7,7 @@ import DailyPrompt from './DailyPrompt.jsx';
 import { posts, trendingMoods } from '../data/mockData.js';
 import { XIcon } from './Icon.jsx';
 
-export default function Feed({ onPlay, nowPlayingId, onOpenComments, onOpenCreate }) {
+export default function Feed({ onPlay, nowPlayingId, onOpenComments, onOpenCreate, onOpenStory }) {
   const [activeMood, setActiveMood] = useState(null); // trending mood label
 
   // Trending → theme lookup so we can match posts even when the label differs.
@@ -28,7 +28,7 @@ export default function Feed({ onPlay, nowPlayingId, onOpenComments, onOpenCreat
       <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6">
         {/* Main column */}
         <div className="space-y-5">
-          <VibesNow onAdd={onOpenCreate} />
+          <VibesNow onAdd={onOpenCreate} onOpenStory={onOpenStory} />
           <DailyPrompt onJoin={onOpenCreate} />
 
           {/* Mobile trending row */}

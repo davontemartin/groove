@@ -1,7 +1,7 @@
 import { vibesNow, themes } from '../data/mockData.js';
 import { PlusIcon } from './Icon.jsx';
 
-export default function VibesNow({ onAdd }) {
+export default function VibesNow({ onAdd, onOpenStory }) {
   return (
     <section className="overflow-visible">
       <div className="flex items-center justify-between mb-2 px-1">
@@ -25,9 +25,9 @@ export default function VibesNow({ onAdd }) {
             return (
               <li key={v.id} className="shrink-0">
                 <button
-                  onClick={v.isMe ? onAdd : undefined}
+                  onClick={v.isMe ? onAdd : () => onOpenStory?.(v)}
                   className="btn-press group flex flex-col items-center gap-1.5 w-[68px]"
-                  aria-label={v.isMe ? 'Add your vibe' : `${v.user.displayName} ${v.label}`}
+                  aria-label={v.isMe ? 'Add your vibe' : `Play ${v.user.displayName}'s vibe`}
                 >
                   <div className="relative">
                     {/* Gradient ring — image sits inside with a thin transparent gap */}

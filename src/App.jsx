@@ -5,6 +5,7 @@ import Profile from './components/Profile.jsx';
 import CreatePostModal from './components/CreatePostModal.jsx';
 import MiniPlayer from './components/MiniPlayer.jsx';
 import CommentsSheet from './components/CommentsSheet.jsx';
+import StoryPlayer from './components/StoryPlayer.jsx';
 
 export default function App() {
   const [tab, setTab] = useState('feed');
@@ -13,6 +14,7 @@ export default function App() {
   const [nowPlaying, setNowPlaying] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [commentsPost, setCommentsPost] = useState(null);
+  const [storyVibe, setStoryVibe] = useState(null);
 
   const handlePlay = (post) => {
     if (nowPlaying?.id === post.id) {
@@ -44,6 +46,7 @@ export default function App() {
               nowPlayingId={isPlaying ? nowPlaying?.id : null}
               onOpenComments={(post) => setCommentsPost(post)}
               onOpenCreate={() => setCreateOpen(true)}
+              onOpenStory={(vibe) => setStoryVibe(vibe)}
             />
           )}
           {tab === 'profile' && <Profile />}
@@ -70,6 +73,8 @@ export default function App() {
           post={commentsPost}
           onClose={() => setCommentsPost(null)}
         />
+
+        <StoryPlayer vibe={storyVibe} onClose={() => setStoryVibe(null)} />
 
         {toast && (
           <div className="fixed z-50 left-1/2 -translate-x-1/2 bottom-40 md:bottom-24 px-4 py-2.5 rounded-full bg-white text-ink-950 text-sm font-bold shadow-xl animate-slide-up">

@@ -109,14 +109,54 @@ export const vibeMatches = [
 
 export const moodEmojis = ['🌧️', '💪', '😈', '😔', '☀️', '🧠', '💔', '🎧', '☕️', '✨', '🔥', '🌙', '🩵', '🥲', '🦋'];
 
+// A vibe story is a short playlist — the sounds a user added, each tagged with
+// what they were feeling. The StoryPlayer previews a few seconds of each.
+const track = (songId, emoji, text, theme) => ({ song: byId(songId), mood: { emoji, text }, theme });
+
 // "Vibes now" — friends actively listening / posting in the last hour.
 export const vibesNow = [
   { id: 'v_me', user: currentUser, emoji: '✨', label: 'add yours', isMe: true, theme: 'violet' },
-  { id: 'v1', user: userById('u1'), emoji: '🌧️', label: 'now', live: true, theme: 'violet' },
-  { id: 'v2', user: userById('u2'), emoji: '💪', label: '2m', live: true, theme: 'fire' },
-  { id: 'v3', user: userById('u4'), emoji: '😈', label: '5m', live: true, theme: 'villain' },
-  { id: 'v4', user: userById('u3'), emoji: '🧠', label: '14m', theme: 'matrix' },
-  { id: 'v5', user: userById('u5'), emoji: '☀️', label: '32m', theme: 'sunset' },
+  {
+    id: 'v1', user: userById('u1'), emoji: '🌧️', label: 'now', live: true, theme: 'violet',
+    tracks: [
+      track('s5', '🌧️', 'late night thoughts', 'violet'),
+      track('s8', '🌙', "can't sleep again", 'villain'),
+      track('s10', '🥲', 'soft sad hours', 'ocean'),
+      track('s1', '🎧', 'driving home alone', 'violet'),
+    ],
+  },
+  {
+    id: 'v2', user: userById('u2'), emoji: '💪', label: '2m', live: true, theme: 'fire',
+    tracks: [
+      track('s9', '💪', 'gym locked in', 'fire'),
+      track('s2', '🔥', 'last set energy', 'fire'),
+      track('s3', '🧠', 'push through it', 'sunset'),
+    ],
+  },
+  {
+    id: 'v3', user: userById('u4'), emoji: '😈', label: '5m', live: true, theme: 'villain',
+    tracks: [
+      track('s2', '😈', 'villain mode', 'villain'),
+      track('s9', '🔥', 'no thoughts just bass', 'fire'),
+      track('s7', '🌙', 'late drive energy', 'villain'),
+    ],
+  },
+  {
+    id: 'v4', user: userById('u3'), emoji: '🧠', label: '14m', theme: 'matrix',
+    tracks: [
+      track('s8', '🧠', 'deep in the zone', 'matrix'),
+      track('s3', '✨', 'flow state activated', 'matrix'),
+      track('s6', '☀️', 'good things coming', 'latte'),
+    ],
+  },
+  {
+    id: 'v5', user: userById('u5'), emoji: '☀️', label: '32m', theme: 'sunset',
+    tracks: [
+      track('s10', '☀️', 'golden hour feels', 'sunset'),
+      track('s6', '🦋', 'soft afternoon', 'latte'),
+      track('s4', '🩵', 'slow dancing alone', 'sunset'),
+    ],
+  },
 ];
 
 // Daily prompt rotates every 24h in production; static here for the demo.
